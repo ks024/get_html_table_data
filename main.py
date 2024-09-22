@@ -1,4 +1,4 @@
-import os
+# import os
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -17,7 +17,7 @@ def get_chrome_version():
         key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Google\Chrome\BLBeacon")
         version, type = winreg.QueryValueEx(key, "version")
         return version
-    except:
+    except:  # noqa: E722
         return None
 
 def setup_driver():
