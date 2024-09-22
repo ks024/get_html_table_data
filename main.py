@@ -13,7 +13,7 @@ def setup_driver():
     # options = webdriver.ChromeOptions()
     # options.add_argument("--headless=new")
     chrome_options = Options()
-    chrome_options.add_argument("--headless=new")
+    chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
@@ -78,8 +78,12 @@ finally:
     if 'driver' in locals():
         driver.quit()
 
-df = pd.DataFrame(all_data, columns=headers)
-df.to_csv("local_contact_data.csv", index=False, encoding='utf-8')
 
-print("Data extraction complete. CSV file 'local_contact_data.csv' has been created.")
-print(f"Total rows extracted: {len(df)}")
+# Output CSV
+try:
+    df = pd.DataFrame(all_data, columns=headers)
+    df.to_csv("local_contact_data.csv", index=False, encoding='utf-8')
+    print("Data extraction complete. CSV file 'local_contact_data.csv' has been created.")
+    print(f"Total rows extracted: {len(df)}")
+except Exception as e:
+    print(f"Failed to write CSV: {e}")
