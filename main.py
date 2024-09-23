@@ -34,7 +34,7 @@ headers = []
 try:
     driver = setup_driver()
 
-    for page in range(1, 52):  # Scrape all 51 pages
+    for page in range(1, 52):  # Scraping data from 51 pages
         url = f"https://mofaga.gov.np/local-contact?page={page}"
         driver.get(url)
         
